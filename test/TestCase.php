@@ -19,21 +19,11 @@
 namespace Psy\Test;
 
 // PHPUnit <= 9
-if (\version_compare(\PHP_VERSION, '7.1', '<')) {
-    trait AssertMatchesRegularExpressionForwardCompatibility
+trait AssertMatchesRegularExpressionForwardCompatibility
+{
+    public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = '')
     {
-        public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = '')
-        {
-            static::assertRegExp($pattern, $string, $message);
-        }
-    }
-} else {
-    trait AssertMatchesRegularExpressionForwardCompatibility
-    {
-        public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = ''): void
-        {
-            static::assertRegExp($pattern, $string, $message);
-        }
+        static::assertRegExp($pattern, $string, $message);
     }
 }
 
